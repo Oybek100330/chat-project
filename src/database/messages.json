@@ -1,0 +1,22 @@
+[
+    {
+        "messageId": 1,
+        "from": 1, 
+        "to": 2, 
+        "type": "text", 
+        "title": "hello", 
+        "size": null, 
+        "data": "Sat Jan 15 2022 12:27:43 GMT+0500 (Узбекистан, стандартное время)", 
+        "isDeleted": false
+    },
+    {
+        "messageId": 2,
+        "from": 2, 
+        "to": 1, 
+        "type": "text", 
+        "title": "qalaysan", 
+        "size": null, 
+        "data": "Sat Jan 15 2022 12:27:45 GMT+0500 (Узбекистан, стандартное время)", 
+        "isDeleted": false
+    }
+]
