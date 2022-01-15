@@ -10,5 +10,17 @@
         "username": "Vali",
         "password": "6e656676e46fbe15e5f74882aff541c6707547014580543ed6040ac7f17a6880",
         "profileImg": "/images/man2.jpeg"
+    },
+    {
+        "userId": 3,
+        "username": "Yulduz",
+        "password": "1dc98c953c720b227b226526d2e6bc3e77e2659d85bdc74e12f9082d5c68f17f",
+        "profileImg": "/images/1642250150948h-5.jpg"
+    },
+    {
+        "userId": 4,
+        "username": "Akmal",
+        "password": "1dc98c953c720b227b226526d2e6bc3e77e2659d85bdc74e12f9082d5c68f17f",
+        "profileImg": "/images/1642250244035h-4.jpg"
     }
 ]
