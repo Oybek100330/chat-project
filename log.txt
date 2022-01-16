@@ -4,3 +4,12 @@
 2022-01-16 | 23:48  POST  /auth/login  x is not defined
 2022-01-16 | 23:48  POST  /auth/login  y is not defined
 2022-01-16 | 23:52  POST  /auth/login  y is not defined
+2022-01-17 | 01:56  PUT  /users  ClientError is not defined
+2022-01-17 | 01:56  PUT  /users  ClientError is not defined
+2022-01-17 | 01:57  PUT  /users  ClientError is not defined
+2022-01-17 | 01:57  PUT  /users  ClientError is not defined
+2022-01-17 | 02:00  PUT  /users  Cannot destructure property 'size' of 'req.file' as it is undefined.
+2022-01-17 | 02:03  PUT  /users  path is not defined
+2022-01-17 | 02:04  PUT  /users  Callback must be a function. Received undefined
+2022-01-17 | 02:05  PUT  /users  ENOENT: no such file or directory, unlink 'F:\Javascript\Chat-Project\Chat-backend\src\files\images\164236710840420181012_180319.jpg'
+2022-01-17 | 02:06  PUT  /users  Cannot access 'avatarName' before initialization

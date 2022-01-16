@@ -28,7 +28,9 @@ const GET = (req, res, next) => {
 
 const POST = (req, res, next) => {
     try {
-        const { messageText } = req.body
+        let { messageText } = req.body
+        messageText = messageText.trim()
+        if(messageText.length > 100) throw new ClientError(400, "Xabar juda katta!")
         const messages = req.select('messages')
         
         let newMessage = {
@@ -69,7 +71,22 @@ const POST = (req, res, next) => {
 
 const PUT = (req, res, next) => {
     try {
-        
+        let { messageId, messageText } = req.body
+        messageText = messageText.trim()
+        if(!messageId) throw new ClientError(400, "messageId kiritilmagan!")
+
+        const messages = req.select('messages')
+        const found = messages.find(message => message.messageId == messageId)
+        if(!found) throw new ClientError(400, "Bunday xabar topilmadi!")
+        found.messageText = messageText
+
+        req.insert('messages', messages)
+
+        return res.status(201).json({
+            updatedMessage: found,
+            message: "Xabar o'zgartirildi",
+        })
+
     } catch(error){
         next(error)
     }
@@ -77,7 +94,21 @@ const PUT = (req, res, next) => {
 
 const DELETE = (req, res, next) => {
     try {
+        let { messageId } = req.body
+        
+        if(!messageId) throw new ClientError(400, "messageId kiritilmagan!")
 
+        const messages = req.select('messages')
+        const found = messages.find(message => message.messageId == messageId)
+        if(!found) throw new ClientError(400, "Bunday xabar topilmadi!")
+        found.isDeleted = true
+
+        req.insert('messages', messages)
+
+        return res.status(201).json({
+            deletedMessage: found,
+            message: "Xabar o'chirildi",
+        })
     } catch(error){
         next(error)
     }

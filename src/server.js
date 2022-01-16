@@ -5,6 +5,7 @@ const { PORT } = require('../config.js')
 const app = express()
 const path = require('path')
 const fs = require('fs')
+const checkToken = require('./middlewares/checkToken.js')
 
 const modelMiddleware = require('./middlewares/model.js')
 app.use(express.json())
@@ -15,12 +16,14 @@ const authRouter = require('./routes/auth.js')
 const messageRouter = require('./routes/message.js')
 
 app.use(modelMiddleware)
-app.use('/users', userRouter)
 app.use('/auth', authRouter)
+app.use(checkToken)
+app.use('/users', userRouter)
 app.use('/messages', messageRouter)
 
 app.use((error, req, res, next) => {
     if([400, 401, 404, 413, 415].includes(error.status)) {
+        console.log(error);
         return res.status(error.status).send(error)
     }
 
@@ -28,7 +31,7 @@ app.use((error, req, res, next) => {
         path.join(process.cwd(), 'log.txt'),
         `${timeConverter(new Date())}  ${req.method}  ${req.url}  ${error.message}\n`
     )
-
+    console.log(error);
     return res.status(500).send(new ServerError(""))
 })
 
