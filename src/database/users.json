@@ -22,5 +22,11 @@
         "username": "Akmal",
         "password": "1dc98c953c720b227b226526d2e6bc3e77e2659d85bdc74e12f9082d5c68f17f",
         "profileImg": "/images/1642250244035h-4.jpg"
+    },
+    {
+        "userId": 5,
+        "username": "Solibek",
+        "password": "1dc98c953c720b227b226526d2e6bc3e77e2659d85bdc74e12f9082d5c68f17f",
+        "profileImg": "/images/1642323867731_MG_9842.JPG"
     }
 ]
