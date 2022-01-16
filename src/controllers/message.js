@@ -1,3 +1,4 @@
+const { ClientError } = require('../utils/error.js')
 const path = require('path')
 const fs = require('fs')
 const timeConverter = require('../utils/timeConverter.js')
@@ -82,9 +83,19 @@ const DELETE = (req, res, next) => {
     }
 }
 
+const DOWNLOAD = (req, res, next) => {
+    try {
+        const { filepath } = req.params
+        res.download( path.join( process.cwd(), 'src', 'files', 'messageFiles', filepath))
+    } catch(error){
+        next(error)
+    }
+}
+
 module.exports = {
     GET,
     POST,
     PUT,
-    DELETE
+    DELETE,
+    DOWNLOAD
 }

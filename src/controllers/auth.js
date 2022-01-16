@@ -1,3 +1,4 @@
+const { ClientError } = require('../utils/error.js')
 const path = require('path')
 const fs = require('fs')
 
@@ -7,12 +8,12 @@ const sha256 = require('sha256')
 const LOGIN = (req, res, next) => {
     try {
         const { username, password } = req.body
-        if( !username || !password ) throw new Error("username and password is required!")
+        if( !username || !password ) throw new ClientError(400, "username yoki parol kiritilmagan!")
 
         const users = req.select('users')
         const user = users.find(user => user.username == username && user.password == sha256(password))
 
-        if(!user) throw new Error("Wrong username or password")
+        if(!user) throw new ClientError(404, "Xato username yoki password")
         delete user.password
 
         return res.status(200).json({
@@ -33,13 +34,13 @@ const REGISTER = (req, res, next) => {
 
         const found = users.find(user => user.username == username)
 
-        if(found) throw new Error("This user already exists!")
-        if(!req.file) throw new Error("The avatar image is required")
+        if(found) throw new ClientError(400, "Bunday foydalanuvchi nomi avval ishlatilgan!")
+        if(!req.file) throw new ClientError(400, "Profil uchun rasm kiritilmadi!")
 
         const { size, mimetype, buffer, originalname } = req.file
 
-        if(size > 10 * (2 ** 20)) throw new Error("The avatar image is larger 10 MB")
-        if(!['image/jpg', 'image/jpeg', 'image/png'].includes(mimetype)) throw new Error("The avatar image format must be jpg, jpeg or png")
+        if(size > 10 * (2 ** 20)) throw new ClientError(400, "Rasm hajmi 10 MB dan kam bo'lishi kerak!")
+        if(!['image/jpg', 'image/jpeg', 'image/png'].includes(mimetype)) throw new ClientError(400, "Rasm formatijpg, jpeg yoki png bo'lishi kerak!")
 
         const avatarName = Date.now() + originalname.replace(/\s/g, '')
         const pathName = path.join( process.cwd(), 'src', 'files', 'images', avatarName)

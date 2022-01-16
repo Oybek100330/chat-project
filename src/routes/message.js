@@ -5,6 +5,7 @@ const checkToken = require('../middlewares/checkToken.js')
 const messageFile = multer()
 
 router.get('/', controller.GET)
+router.get('/download/messageFiles/:filepath', controller.DOWNLOAD)
 router.get('/:messageId', controller.GET)
 router.post('/', checkToken, messageFile.single('messageFile'), controller.POST)
 router.put('/', checkToken, controller.PUT)
