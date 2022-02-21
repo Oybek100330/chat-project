@@ -1,6 +1,7 @@
 const { ServerError } = require('./utils/error.js')
 const timeConverter = require('./utils/timeConverter.js')
 const express = require('express')
+const cors = require('cors')
 const { PORT } = require('../config.js')
 const app = express()
 const path = require('path')
@@ -8,6 +9,7 @@ const fs = require('fs')
 const checkToken = require('./middlewares/checkToken.js')
 
 const modelMiddleware = require('./middlewares/model.js')
+app.use(cors())
 app.use(express.json())
 app.use(express.static(path.join(process.cwd(), 'src', 'files')))
 
@@ -17,8 +19,8 @@ const messageRouter = require('./routes/message.js')
 
 app.use(modelMiddleware)
 app.use('/auth', authRouter)
-app.use(checkToken)
 app.use('/users', userRouter)
+app.use(checkToken)
 app.use('/messages', messageRouter)
 
 app.use((error, req, res, next) => {

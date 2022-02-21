@@ -1,5 +1,6 @@
 const { verify } = require('../utils/jwt.js')
 const { ClientError } = require('../utils/error.js')
+
 module.exports = (req, res, next) => {
     try {
         const { token } = req.headers

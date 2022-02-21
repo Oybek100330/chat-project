@@ -3,13 +3,13 @@
         "userId": 1,
         "username": "Ali",
         "password": "6e656676e46fbe15e5f74882aff541c6707547014580543ed6040ac7f17a6880",
-        "profileImg": "/images/man1.jpeg"
+        "profileImg": "/images/man1.jpg"
     },
     {
         "userId": 2,
         "username": "Vali",
         "password": "6e656676e46fbe15e5f74882aff541c6707547014580543ed6040ac7f17a6880",
-        "profileImg": "/images/man2.jpeg"
+        "profileImg": "/images/man2.jpg"
     },
     {
         "userId": 3,
@@ -28,5 +28,11 @@
         "username": "Sanjar",
         "password": "1dc98c953c720b227b226526d2e6bc3e77e2659d85bdc74e12f9082d5c68f17f",
         "profileImg": "/images/164236735905420181012_180319.jpg"
+    },
+    {
+        "userId": 6,
+        "username": "Hikmat",
+        "password": "20f25393c3a898547858e1fdddb8d067ab9630c3b0d82f197c6ae00f040a304e",
+        "profileImg": "/images/1645330767608lgtv.jpg"
     }
 ]

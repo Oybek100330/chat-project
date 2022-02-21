@@ -28,16 +28,16 @@ const GET = (req, res, next) => {
 
 const POST = (req, res, next) => {
     try {
-        let { messageText } = req.body
+        let { to, messageText } = req.body
         messageText = messageText.trim()
         if(messageText.length > 100) throw new ClientError(400, "Xabar juda katta!")
         const messages = req.select('messages')
-        
+        console.log(req.userId);
         let newMessage = {
             messageId: messages.length ? messages[messages.length - 1].messageId + 1 : 1,
             from: req.userId,
-            to: 3,
-            messageText: messageText,
+            to: +to,
+            messageText,
             messageFile: null,
             data: new Date(),
             isDeleted: false
